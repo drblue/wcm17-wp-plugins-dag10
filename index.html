@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Simple Map</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
+	<style>
+		/* Always set the map height explicitly to define the size of the div
+	   * element that contains the map. */
+
+		#map {
+			height: 100%;
+		}
+
+		/* Optional: Makes the sample page fill the window. */
+
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="map"></div>
+	<script>
+		var map;
+
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {
+					lat: 55.6109825,
+					lng: 12.9964563
+				},
+				zoom: 12
+			});
+
+			var places = {
+				count: 89,
+				results: [
+					{
+						title: 'My first place',
+						desc: 'Lorem ipsum',
+						address: 'Skeppsbron 5',
+						city: 'Malmö',
+						lat: 55.6109825,
+						lng: 12.9964563,
+					},
+					{
+						title: 'My second place',
+						desc: 'Lorem ipsum',
+						address: 'Skeppsbron 1',
+						city: 'Malmö',
+						lat: 55.610985,
+						lng: 12.996458,
+					},
+				]
+			}
+
+			$.each(places.result, function(index, place) {
+				var marker = new google.maps.Marker({
+					position: {
+						lat: place.lat,
+						lng: place.lng,
+					},
+					map: map,
+				})
+			});
+
+			// our first map marker
+			var marker = new google.maps.Marker({
+				position: {
+					lat: 55.611069,
+					lng: 12.998012,
+				},
+				map: map
+			});
+
+			// our second map marker
+			var marker2 = new google.maps.Marker({
+				position: {
+					lat: 55.609521,
+					lng: 13.000318,
+				},
+				map: map
+			});
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe-GZldOyNH28OsjkstfHgJRimyTswNsU&callback=initMap" async defer></script>
+</body>
+
+</html>
